@@ -5,6 +5,8 @@ public class Node {
 	private Node parent;
 	private RobotAction action;
 	private float pathCost;
+	private float heuristic;
+	private float tot;
 
 	public Node (Block value, Node parent, RobotAction action, float cost) {
 		this.value = value;
@@ -30,4 +32,15 @@ public class Node {
 		return pathCost;
 	}
 
+	public void setHeuristic(float heuristic){
+		this.heuristic = heuristic;
+	}
+
+	public float getHeuristic(){
+		return this.heuristic;
+	}
+
+	public void setTot(float tot){ this.tot = tot;	}
+
+	public float getTot(){ return this.tot;}
 }
