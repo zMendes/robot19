@@ -21,7 +21,7 @@ public class BuscaGulosa {
      */
     public Node buscar() {
 
-        HashSet<Node> isAdded = new HashSet<>();
+        HashSet<Block> isAdded = new HashSet<>();
         Node root = new Node(start, null, null, 0);
 
         //Limpa a fronteira e insere o nó raiz
@@ -33,6 +33,7 @@ public class BuscaGulosa {
         while(!border.isEmpty()) {
 
             Node node = border.remove();
+            isAdded.add(node.getValue());
             Block atual = node.getValue();
 
             if(atual.row == end.row && atual.col == end.col) {
@@ -45,9 +46,9 @@ public class BuscaGulosa {
                 if(proximo != null && proximo.type != BlockType.WALL) {
                     Node novoNode = new Node(proximo, node, acao, proximo.type.cost);
                     novoNode.setHeuristic(heuristic(novoNode));
-                    if (!isAdded.contains(novoNode)){
+                    if (!isAdded.contains(novoNode.getValue())){
                         border.add(novoNode);
-                        isAdded.add(novoNode);
+
                     }
 
 
